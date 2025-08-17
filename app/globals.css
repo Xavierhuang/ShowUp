@@ -120,3 +120,257 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Cyberpunk Theme Overrides */
+:root {
+  /* Cyberpunk Colors */
+  --cyber-blue: #00d4ff;
+  --cyber-purple: #8b5cf6;
+  --cyber-pink: #f97316;
+  --cyber-orange: #fb923c;
+  --cyber-green: #10b981;
+  --cyber-dark: #0a0a0f;
+  --cyber-darker: #050507;
+  --cyber-gray: #1e1e2e;
+  
+  /* Neon Effects */
+  --neon-glow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+  --hologram: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1), rgba(249, 115, 22, 0.1));
+  --cyber-gradient: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 50%, #f97316 100%);
+  
+  /* Override background for cyberpunk theme */
+  --background: var(--cyber-darker);
+  --foreground: var(--cyber-blue);
+  --card: rgba(26, 26, 46, 0.8);
+  --primary: var(--cyber-blue);
+  --secondary: var(--cyber-purple);
+  --accent: var(--cyber-orange);
+}
+
+.dark {
+  --background: var(--cyber-darker);
+  --foreground: var(--cyber-blue);
+  --card: rgba(26, 26, 46, 0.8);
+  --primary: var(--cyber-blue);
+  --secondary: var(--cyber-purple);
+  --accent: var(--cyber-orange);
+}
+
+/* Cyberpunk Body Styles */
+body {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #050507 0%, #0a0a0f 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Cyberpunk Typography */
+.cyber-heading {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Consolas', 'Courier New', monospace;
+  font-weight: 700;
+  background: var(--cyber-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+.cyber-text {
+  color: var(--cyber-blue);
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+/* Ensure all text is visible on dark backgrounds */
+.cyber-grid * {
+  color: inherit;
+}
+
+.cyber-grid h1, .cyber-grid h2, .cyber-grid h3, .cyber-grid h4, .cyber-grid h5, .cyber-grid h6 {
+  color: white !important;
+}
+
+.cyber-grid p, .cyber-grid span, .cyber-grid div, .cyber-grid label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.cyber-grid .text-muted-foreground {
+  color: rgba(156, 163, 175, 0.8) !important;
+}
+
+/* Force text visibility on all components */
+.cyber-grid [class*="text-"], .cyber-grid .card-title, .cyber-grid .card-description, .cyber-grid .badge {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Specific overrides for common UI elements */
+.cyber-grid button, .cyber-grid .button {
+  color: white !important;
+}
+
+.cyber-grid input::placeholder {
+  color: rgba(156, 163, 175, 0.7) !important;
+}
+
+/* Additional text visibility fixes */
+.cyber-grid .text-sm, .cyber-grid .text-xs, .cyber-grid .text-lg, .cyber-grid .text-xl {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.cyber-grid strong, .cyber-grid b {
+  color: white !important;
+}
+
+/* Ensure card content text is visible */
+.cyber-grid .card-content, .cyber-grid .card-header {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cyber-grid .card-content *, .cyber-grid .card-header * {
+  color: inherit !important;
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  box-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+}
+
+.neon-border {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--cyber-darker), var(--cyber-darker)) padding-box,
+              var(--cyber-gradient) border-box;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* Holographic Card Effect */
+.holo-card {
+  background: 
+    var(--hologram),
+    rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(0, 212, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.holo-card * {
+  color: inherit;
+}
+
+.holo-card h1, .holo-card h2, .holo-card h3, .holo-card h4, .holo-card h5, .holo-card h6 {
+  color: white !important;
+}
+
+.holo-card p, .holo-card span, .holo-card div:not([class*="gradient"]) {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.holo-card .text-muted-foreground {
+  color: rgba(156, 163, 175, 0.9) !important;
+}
+
+.holo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  animation: hologram-sweep 3s infinite;
+}
+
+@keyframes hologram-sweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Cyber Button Styles */
+.cyber-button {
+  background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-purple));
+  border: none;
+  color: white !important;
+  text-transform: uppercase;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Consolas', 'Courier New', monospace;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-button * {
+  color: white !important;
+}
+
+.cyber-button:hover {
+  box-shadow: 
+    0 0 30px rgba(0, 212, 255, 0.6),
+    0 0 40px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cyber-button:hover::before {
+  left: 100%;
+}
+
+/* Animated Grid Background */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Floating Animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulse Animation */
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  from { box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+  to { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+}
