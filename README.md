@@ -64,7 +64,8 @@ Create `.env` file in the `ShowUpWebApp` directory (same level as the `ShowUp` f
 
 ```env
 # ⚠️ REQUIRED: Dynamic SDK (Get from https://app.dynamic.xyz)
-NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID=your_dynamic_environment_id
+
+NEXT_PUBLIC_DYNAMIC_ENV_ID=e8e967f3-718e-4e90-99e2-f5946fcde1dd
 
 # Flow Configuration
 NEXT_PUBLIC_FLOW_NETWORK=mainnet
@@ -78,9 +79,7 @@ NEXT_PUBLIC_FLOW_EVENTS_CONTRACT=0xa19273383554e1e1
 NEXT_PUBLIC_FLOW_STAKING_CONTRACT=0xa19273383554e1e1
 ```
 
-**How to get Dynamic Environment ID:**
-## this is what you put into the .env NEXT_PUBLIC_DYNAMIC_ENV_ID=e8e967f3-718e-4e90-99e2-f5946fcde1dd
-or
+**How to get your Dynamic Environment ID:**
 1. Go to [app.dynamic.xyz](https://app.dynamic.xyz)
 2. Create account and new project
 3. Copy the Environment ID from your dashboard
@@ -333,20 +332,6 @@ const txId = await FlowService.autoOptimizeYield(eventId);
 - **Transaction confirmation flows**
 - **Error boundary handling**
 - **Rate limiting** on API calls
-
-## 🚀 Deployment Guide
-
-### Frontend (Vercel/Netlify)
-```bash
-# Build for production
-npm run build
-
-# Deploy to Vercel
-npx vercel
-
-# Or deploy to Netlify
-npm run build && netlify deploy --prod --dir=.next
-```
 
 ### Smart Contracts
 
