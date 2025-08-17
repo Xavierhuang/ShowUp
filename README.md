@@ -60,7 +60,7 @@ npm install
 **The app will NOT run without proper environment variables!**
 cd ..
 
-Create `.env` next to `ShowUp` folder (under same directory):
+Create `.env` file in the `ShowUpWebApp` directory (same level as the `ShowUp` folder):
 
 ```env
 # ⚠️ REQUIRED: Dynamic SDK (Get from https://app.dynamic.xyz)
@@ -88,6 +88,21 @@ or
 
 **Without this file, you'll get wallet connection errors!**
 
+**Final Directory Structure:**
+```
+ShowUpWebApp/
+├── .env                        # Environment variables (create this)
+└── ShowUp/                     # Cloned repository
+    ├── rain-dynamic/           # Main Next.js application
+    │   ├── app/               # Next.js pages
+    │   ├── components/        # React components
+    │   ├── lib/              # Core libraries
+    │   └── package.json      # Dependencies
+    └── ShowUp/               # Flow blockchain project
+        ├── cadence/          # Smart contracts
+        └── flow.json         # Flow configuration
+```
+
 ### 3. Flow Blockchain Setup
 
 #### Install Flow CLI
@@ -100,7 +115,7 @@ brew install flow-cli
 
 #### Configure Flow Project
 ```bash
-cd ShowUp
+cd ShowUp/ShowUp  # Navigate to Flow project directory
 flow project init
 ```
 
@@ -121,42 +136,6 @@ Open [http://localhost:3000](http://localhost:3000)
 1. Make sure you created `.env` file (step 2)
 2. Verify your Dynamic Environment ID is correct
 3. Restart the dev server after adding env variables
-
-## 📁 Project Structure
-
-```
-rain-dynamic/
-├── app/                          # Next.js App Router
-│   ├── page.tsx                 # Homepage with cyberpunk hero
-│   ├── events/page.tsx          # Event listings and creation
-│   ├── methods/page.tsx         # Platform tools (5 tabs)
-│   ├── layout.tsx               # Root layout with providers
-│   └── globals.css              # Cyberpunk theme styles
-├── components/                   # React components
-│   ├── ui/                      # Base UI components
-│   ├── blockchain-demo.tsx      # Event creation & staking
-│   ├── organizer-dashboard.tsx  # Event management
-│   ├── yield-dashboard.tsx      # Yield farming display
-│   ├── poap-integration.tsx     # NFT rewards
-│   ├── multi-chain-demo.tsx     # Flow + Flare
-│   ├── create-event-form.tsx    # Event creation modal
-│   ├── event-card.tsx           # Event display card
-│   └── showup-logo.tsx          # Custom cyberpunk logo
-├── lib/                         # Core libraries
-│   ├── flow.ts                  # Flow blockchain integration
-│   ├── flare.ts                 # Flare network integration
-│   ├── poap.ts                  # POAP NFT integration
-│   ├── dynamic.ts               # Dynamic SDK config
-│   └── providers.tsx            # App providers
-├── ShowUp/                      # Flow blockchain project
-│   ├── cadence/
-│   │   ├── contracts/           # Smart contracts
-│   │   ├── transactions/        # Blockchain transactions
-│   │   └── scripts/             # Read-only scripts
-│   ├── flow.json               # Flow project config
-│   └── *.pkey                  # Account private keys
-└── contracts/                   # Solidity contracts (Flare)
-.env
 
 
 ## 🔗 Smart Contracts
