@@ -41,16 +41,26 @@ ShowUp revolutionizes event attendance by combining financial incentives, yield 
 ### 1. Clone & Install
 
 ```bash
+# Create a directory for the project
+mkdir ShowUpWebApp
+cd ShowUpWebApp
+
+# Clone the repository
 git clone https://github.com/Xavierhuang/ShowUp.git
-cd ShowUp/rain-dynamic
+
+# Navigate to the main application directory
+cd ShowUp
+
+# Install dependencies
 npm install
 ```
 
 ### 2. Environment Setup ⚠️ REQUIRED
 
 **The app will NOT run without proper environment variables!**
+cd ..
 
-Create `.env.local` file in the `rain-dynamic` directory:
+Create `.env` next to `ShowUp` folder (under same directory):
 
 ```env
 # ⚠️ REQUIRED: Dynamic SDK (Get from https://app.dynamic.xyz)
@@ -69,10 +79,12 @@ NEXT_PUBLIC_FLOW_STAKING_CONTRACT=0xa19273383554e1e1
 ```
 
 **How to get Dynamic Environment ID:**
+## this is what you put into the .env NEXT_PUBLIC_DYNAMIC_ENV_ID=e8e967f3-718e-4e90-99e2-f5946fcde1dd
+or
 1. Go to [app.dynamic.xyz](https://app.dynamic.xyz)
 2. Create account and new project
 3. Copy the Environment ID from your dashboard
-4. Paste it in your `.env.local` file
+4. Paste it in your `.env` file
 
 **Without this file, you'll get wallet connection errors!**
 
@@ -106,7 +118,7 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000)
 
 **⚠️ If the app shows wallet connection errors:**
-1. Make sure you created `.env.local` file (step 2)
+1. Make sure you created `.env` file (step 2)
 2. Verify your Dynamic Environment ID is correct
 3. Restart the dev server after adding env variables
 
@@ -146,7 +158,6 @@ rain-dynamic/
 └── contracts/                   # Solidity contracts (Flare)
 .env
 
-## this is what you put into the .env NEXT_PUBLIC_DYNAMIC_ENV_ID=e8e967f3-718e-4e90-99e2-f5946fcde1dd
 
 ## 🔗 Smart Contracts
 
@@ -477,19 +488,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ### Common Issues
 
 #### ⚠️ App Won't Start / Wallet Connection Fails
-**Most common issue: Missing `.env.local` file**
+**Most common issue: Missing `.env` file**
 
-```bash
-# 1. Check if .env.local exists
-ls -la .env.local
-
-# 2. If missing, create it with Dynamic Environment ID
-cp .env.example .env.local  # if you have an example file
-# OR manually create .env.local with the required variables
-
-# 3. Verify the Dynamic Environment ID is correct
-cat .env.local | grep DYNAMIC_ENVIRONMENT_ID
-```
 
 **Symptoms of missing env file:**
 - ❌ "Dynamic SDK not configured" errors
