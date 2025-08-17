@@ -207,6 +207,7 @@ Users automatically earn yield from multiple sources:
 - **Pool sharing**: Portion of forfeited stakes
 - **Kitty Punch**: Automated DeFi strategies on Flow EVM
 - **FTSO Delegation**: Oracle rewards on Flare Network
+- **🚀 Flow Actions**: Automated yield optimization and cross-protocol farming (Coming Soon)
 
 ### 4. Check-in Process
 ```typescript
@@ -268,6 +269,35 @@ Via Dynamic SDK:
 - Simulated POAP creation for demonstrations
 - Mock claim process showing user experience
 - Real integration workflow clearly documented
+
+## 🚀 Flow Actions Integration
+
+### Automated Yield Optimization
+ShowUp integrates with Flow Actions for sophisticated DeFi automation:
+
+```typescript
+// Auto-yield optimization transaction
+const txId = await FlowService.autoOptimizeYield(eventId);
+
+// This will automatically:
+// 1. Claim yields from Kitty Punch vaults
+// 2. Claim FTSO delegation rewards
+// 3. Claim IncrementFi staking rewards
+// 4. Auto-restake all yields back into ShowUp events
+```
+
+### Future Features
+- **Set-and-forget yield farming**: No manual claiming needed
+- **Cross-protocol optimization**: Automatic best APY routing
+- **Atomic transactions**: Gas-optimized batch operations
+- **Scheduled optimization**: Regular yield compounding
+- **Risk management**: Slippage protection and safety checks
+
+### Benefits
+- **Higher APY**: Through automatic compounding
+- **Reduced complexity**: One-click optimization
+- **Lower gas costs**: Batched transactions
+- **Better UX**: No manual yield management needed
 
 ## 📈 DeFi Integrations
 

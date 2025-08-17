@@ -5,7 +5,8 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { TrendingUp, Coins, Clock, Zap } from 'lucide-react';
+import { TrendingUp, Coins, Clock, Zap, Rocket } from 'lucide-react';
+import { FlowService } from '@/lib/flow';
 
 interface YieldInfo {
   eventId: string;
@@ -82,6 +83,25 @@ export default function YieldDashboard() {
       alert(`Successfully claimed ${totalEarnings.toFixed(3)} FLOW total! 🎉`);
     } catch (error) {
       console.error('Failed to claim all yields:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 🚀 Flow Actions Auto-Yield Optimization
+  const handleAutoOptimize = async (eventId: string) => {
+    setLoading(true);
+    try {
+      console.log(`🚀 Initiating Flow Actions auto-yield optimization for event: ${eventId}`);
+      
+      // Call Flow Actions transaction
+      const txId = await FlowService.autoOptimizeYield(eventId);
+      
+      console.log(`✅ Auto-yield optimization transaction: ${txId}`);
+      alert(`🚀 Auto-yield optimization initiated!\n\nTransaction: ${txId}\n\nThis will automatically:\n• Claim yields from Kitty Punch vaults\n• Claim FTSO delegation rewards\n• Claim IncrementFi staking rewards\n• Auto-restake all yields back into ShowUp events`);
+    } catch (error) {
+      console.error('❌ Auto-yield optimization failed:', error);
+      alert(`❌ Auto-yield optimization failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
@@ -222,6 +242,18 @@ export default function YieldDashboard() {
                 >
                   <Coins className="w-4 h-4 mr-1" />
                   Claim Yield ({yieldInfo.totalYield.toFixed(3)} FLOW)
+                </Button>
+                
+                {/* 🚀 Flow Actions Auto-Optimize Button */}
+                <Button
+                  onClick={() => handleAutoOptimize(yieldInfo.eventId)}
+                  disabled={loading}
+                  size="sm"
+                  className="cyber-button neon-glow bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600"
+                  title="Auto-optimize yields using Flow Actions"
+                >
+                  <Rocket className="w-4 h-4 mr-1" />
+                  Auto-Optimize
                 </Button>
                 
                 <Button

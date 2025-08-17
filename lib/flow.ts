@@ -81,6 +81,27 @@ export const CONTRACTS = {
     }
   `,
 
+  // Flow Actions auto-yield optimization
+  AUTO_OPTIMIZE_YIELD: `
+    import ShowUpStaking from 0xa19273383554e1e1
+    
+    transaction(eventId: String) {
+      prepare(signer: auth(Storage) &Account) {
+        // Future: Will integrate with Flow Actions for automated yield optimization
+      }
+      
+      execute {
+        log("🚀 Auto-yield optimization initiated for event: ".concat(eventId))
+        log("📊 This transaction will be enhanced with Flow Actions")
+        log("🎯 Future features:")
+        log("   - Claim yields from Kitty Punch vaults")
+        log("   - Claim FTSO delegation rewards") 
+        log("   - Claim IncrementFi staking rewards")
+        log("   - Auto-restake all yields back into ShowUp events")
+      }
+    }
+  `,
+
   // Stake FLOW tokens for an event using your deployed contract
   STAKE_FOR_EVENT: `
     import ShowUpStaking from 0xa19273383554e1e1
@@ -508,6 +529,22 @@ export class FlowService {
     } catch (error) {
       console.error("Failed to get account balance:", error);
       return "0.0";
+    }
+  }
+
+  // Auto-optimize yields using Flow Actions
+  static async autoOptimizeYield(eventId: string): Promise<string> {
+    try {
+      const result = await fcl.mutate({
+        cadence: CONTRACTS.AUTO_OPTIMIZE_YIELD,
+        args: (arg: any, t: any) => [arg(eventId, t.String)],
+      });
+      
+      console.log('🚀 Auto-yield optimization initiated:', result);
+      return result;
+    } catch (error) {
+      console.error('❌ Auto-yield optimization failed:', error);
+      throw error;
     }
   }
 }
